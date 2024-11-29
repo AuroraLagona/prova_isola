@@ -1,0 +1,2608 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+  background-color: #2E8B57;
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 90px; /* Altezza dell'header aumentata */
+}
+
+header .site-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  display: none; /* Nascondi su desktop */
+}
+
+header .site-name a {
+  text-decoration: none;
+  color: white;
+}
+
+header .site-name a:hover {
+  color: #FFD700;
+}
+
+header .logo {
+  display: block;
+}
+
+header .logo img {
+  height: 60px; /* Logo a dimensione leggermente maggiore */
+}
+
+header nav {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-end;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #FFD700;
+}
+
+header nav a.active {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* Aggiunta della classe per la voce "Isola Bella" */
+header nav .site-link {
+  font-weight: bold; /* Grassetto */
+  font-size: 20px; /* Un po' più grande rispetto agli altri link */
+}
+
+header .menu-toggle {
+  display: none; /* Nascondi il bottone hamburger su desktop */
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsività per schermi più piccoli di 768px (tablet e mobile) */
+@media screen and (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  /* Nome del sito visibile su mobile */
+  header .site-name {
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  /* Rimuove il logo su mobile */
+  header .logo {
+    display: none;
+  }
+
+  /* Menu di navigazione a tendina per mobile */
+  header nav {
+    display: none; /* Nasconde il menu di default */
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: #2E8B57;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  header nav a {
+    font-size: 16px;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  /* Mostra il bottone hamburger */
+  header .menu-toggle {
+    display: block;
+  }
+
+  /* Quando il menu è visibile */
+  header nav.active {
+    display: flex;
+  }
+}
+
+/* Responsività per schermi molto piccoli (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  header {
+    padding: 10px 15px;
+  }
+
+  header .site-name {
+    font-size: 18px;
+  }
+
+  header nav a {
+    font-size: 14px;
+  }
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh; /* Altezza della sezione Hero */
+  overflow: hidden;
+  background-image: url('copertina home.jpg'); /* Usa l'immagine come background */
+  background-size: cover; /* L'immagine copre tutta la sezione senza distorcersi */
+  background-position: center center; /* Centra l'immagine */
+  background-repeat: no-repeat; /* Non ripete l'immagine */
+}
+
+/* Contenitore dell'immagine Hero (opzionale, se desideri continuare ad usare un tag img) */
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Mette l'immagine dietro il contenuto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenitore del contenuto della Hero */
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2; /* Sovrascrive l'immagine */
+  text-align: center; /* Allinea il testo al centro */
+}
+
+/* Testo dell'intestazione */
+.hero-text {
+  max-width: 750px;
+  background: rgba(0, 0, 0, 0.5); /* Sovrapposizione scura per il testo */
+  padding: 40px;
+  border-radius: 15px;
+  text-align: left; /* Cambiato da center a left */
+  color: white;
+  position: absolute;
+  left: 10%; /* Sposta il contenuto più a sinistra */
+  top: 40%; /* Sposta il contenuto più in basso */
+  transform: translateY(-40%); /* Compensa l'effetto di "top" per centrare meglio il contenuto */
+  opacity: 0; /* Inizia invisibile */
+  animation: fadeInSlide 1.5s ease-out 0.5s forwards; /* Aggiungi un delay per un effetto più naturale */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Aggiungi ombra al contenuto per migliorare la visibilità */
+}
+
+/* Animazione di fadeIn con slide verso l'alto */
+@keyframes fadeInSlide {
+  0% {
+      opacity: 0;
+      transform: translateY(20px); /* Iniziamo più in basso */
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0); /* Arriva alla posizione finale */
+  }
+}
+
+/* Titolo della Hero */
+.hero h1 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+/* Descrizione sotto il titolo */
+.hero p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  color: white;
+}
+
+/* Bottone per esplorare */
+.btn-learn-more {
+  background-color: #FFD700; /* Colore dorato */
+  color: #2E8B57;
+  text-decoration: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.btn-learn-more:hover {
+  background-color: #f1c40f;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsività per schermi tra 1024px e 1440px */
+@media screen and (max-width: 1024px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .hero-text {
+    max-width: 85%;
+  }
+}
+
+/* Responsività per schermi tra 768px e 1024px (Tablet) */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 70vh; /* Altezza più bassa su tablet */
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-text {
+    padding: 30px;
+    max-width: 100%;
+    left: 10%;
+    top: 50%; /* Cambia leggermente il posizionamento su tablet */
+    transform: translateY(-50%);
+  }
+
+  .btn-learn-more {
+    padding: 12px 25px;
+    font-size: 16px;
+  }
+}
+
+/* Responsività per schermi tra 480px e 768px (Mobile) */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 60vh;
+    background-size: cover; /* Rende l'immagine di sfondo adattabile su mobile */
+  }
+
+  .hero-text {
+    padding: 20px;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .btn-learn-more {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Schermi molto piccoli (Smartphone in verticale) */
+@media screen and (max-width: 480px) {
+  .hero {
+    height: 50vh; /* Ridurre l'altezza su schermi molto piccoli */
+    background-size: cover; /* Rende l'immagine di sfondo adattabile su mobile */
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero-text {
+    padding: 15px;
+    left: 5%;
+    top: 45%;
+    transform: translateY(-50%);
+  }
+
+  .btn-learn-more {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}
+
+
+***
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Container principale */
+.isola-bella-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+/* Distacco dalla sezione Hero */
+.isola-bella-sezione {
+  margin-top: 60px; /* Distanziamento dalla sezione hero */
+}
+
+/* Layout con due colonne */
+.isola-bella-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  flex-wrap: wrap; /* Permette di andare a capo su schermi piccoli */
+  gap: 20px; /* Spazio tra le colonne */
+}
+
+/* Colonna del testo */
+.isola-bella-text-column {
+  flex: 0 0 60%; /* Occupiamo il 60% della larghezza per il testo */
+  padding-right: 20px;
+  margin-bottom: 30px;
+}
+
+/* Evidenziazione del titolo */
+.isola-bella-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 4px solid #007bff; /* Linea colorata sotto il titolo */
+  display: inline-block;
+}
+
+/* Testo con larghezza ridotta */
+.isola-bella-text-column p {
+  text-align: left;
+  line-height: 1.6;
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Colonna decorativa a destra */
+.isola-bella-decorative-column {
+  flex: 0 0 35%; /* Occupiamo il 35% della larghezza per la colonna decorativa */
+  background-color: #f0f0f0; /* Sfondo decorativo chiaro */
+  border-radius: 8px;
+  height: 300px; /* Altezza definita */
+  margin-bottom: 30px;
+}
+
+/* Griglia di Immagini */
+.isola-bella-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Immagini della griglia */
+.isola-bella-image-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.isola-bella-image-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.isola-bella-image-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.isola-bella-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.isola-bella-lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+/* Responsività */
+@media (max-width: 1024px) {
+  .isola-bella-container {
+    padding: 20px; /* Aggiungi padding laterale per schermi piccoli */
+  }
+
+  .isola-bella-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Spazio tra gli elementi */
+  }
+
+  .isola-bella-text-column {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 20px; /* Riduci il margine inferiore per la colonna di testo */
+  }
+
+  .isola-bella-decorative-column {
+    flex: 0 0 100%;
+    margin-bottom: 20px; /* Riduci il margine inferiore per la colonna decorativa */
+  }
+
+  .isola-bella-image-grid {
+    grid-template-columns: repeat(2, 1fr); /* Due colonne nella griglia su schermi più piccoli */
+    gap: 15px; /* Spazio tra le immagini */
+  }
+}
+***
+
+/* Sezione Card - Isola Bella */
+.isola-bella-cards {
+  padding: 60px 20px;
+  background-color: #2E8B57; /* Colore verde solido di sfondo */
+  color: #fff; /* Colore del testo bianco per contrasto */
+  text-align: left; /* Allineiamo il testo a sinistra */
+  position: relative;
+  z-index: 1; /* Assicura che la sezione sia sopra altri elementi */
+}
+
+.isola-bella-cards .section-title {
+  font-size: 2.5rem;
+  color: #27ae60; /* Cambiato il colore del titolo in verde */
+  margin-left: 120px; /* Margine sinistro ridotto per spostarlo leggermente più verso destra */
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Ombra per migliorare la visibilità */
+}
+
+.isola-bella-cards .section-description {
+  font-size: 1.1rem;
+  color: #fff; /* Colore della descrizione in bianco */
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: 120px; /* Allinea la descrizione con il titolo */
+  margin-right: auto;
+}
+
+/* Container delle card */
+.isola-bella-card-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Una card per riga su schermi piccoli */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Stile per ogni singola card */
+.isola-bella-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  overflow: hidden; /* Assicura che l'immagine non esca dai bordi */
+}
+
+.isola-bella-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.isola-bella-card h3 {
+  font-size: 1.8rem;
+  margin: 20px 0;
+  color: #2c3e50;
+}
+
+.isola-bella-card p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Stile per il pulsante */
+.isola-bella-card .btn {
+  display: inline-block;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #27ae60;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.isola-bella-card .btn:hover {
+  background-color: #2ecc71;
+}
+
+/* Hover sulla card */
+.isola-bella-card:hover {
+  transform: translateY(-10px); /* Solleva leggermente la card */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Ombra più forte */
+}
+
+/* Hover sull'immagine */
+.isola-bella-card:hover img {
+  transform: scale(1.05); /* Effetto di zoom sull'immagine */
+}
+
+/* Responsività per schermi più piccoli */
+@media (max-width: 768px) {
+  .isola-bella-card-container {
+      grid-template-columns: 1fr; /* Una card per riga su schermi piccoli */
+      padding: 0 20px; /* Aggiungi padding laterale per schermi piccoli */
+  }
+
+  /* Modifica il margine del titolo e della descrizione su schermi piccoli */
+  .isola-bella-cards .section-title,
+  .isola-bella-cards .section-description {
+      margin-left: 20px; /* Aggiunto margine ridotto per schermi piccoli */
+      margin-right: 20px; /* Aggiunto margine a destra per evitare che tocchi il bordo */
+  }
+}
+
+/* Responsività per schermi medi (tablet e superiori) */
+@media (min-width: 768px) {
+  .isola-bella-card-container {
+      grid-template-columns: repeat(2, 1fr); /* Due card per riga */
+  }
+}
+
+/* Responsività per schermi grandi (desktop) */
+@media (min-width: 1200px) {
+  .isola-bella-card-container {
+      grid-template-columns: repeat(4, 1fr); /* Quattro card per riga */
+  }
+}
+
+.divisore-intro {
+  padding: 30px 20px; /* Ridotto il padding per rendere la sezione più compatta */
+  background: linear-gradient(135deg, #2E8B57, #e65c00); /* Sfumatura verde */
+  color: white;
+  text-align: left; /* Allinea il testo a sinistra */
+  margin-bottom: 20px; /* Ridotto lo spazio tra questa sezione e la successiva */
+  border-top: 2px solid #1c6b3b; /* Linea superiore sottile e verde scura */
+}
+
+.divisore-intro h2 {
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  padding-left: 40px; /* Distanza dal bordo sinistro */
+}
+
+.divisore-intro p {
+  font-size: 1.0rem;
+  color: white;
+  margin-top: 10px;
+  line-height: 1.5;
+  padding-left: 40px; /* Allineamento con il titolo */
+}
+
+/* Responsività per dispositivi mobili */
+@media (max-width: 768px) {
+  .divisore-intro h2 {
+    font-size: 2rem; /* Ridurre la dimensione del titolo su schermi più piccoli */
+    padding-left: 20px; /* Distanza dal bordo su dispositivi più piccoli */
+  }
+
+  .divisore-intro p {
+    font-size: 1rem; /* Ridurre la dimensione del testo su schermi più piccoli */
+    padding-left: 20px; /* Distanza dal bordo su dispositivi più piccoli */
+  }
+}
+
+/* Sezione Blog e Social Media - Separata dalle altre */
+.blog-social {
+  padding: 60px 20px;
+  background-color: #2E8B57; /* Colore verde per distinguere la sezione */
+  color: #fff; /* Colore del testo bianco per contrasto */
+  text-align: center;
+  margin-top: 60px; /* Aggiungi margine superiore per separarla dalle altre sezioni */
+  border-top: 4px solid #fff; /* Linea separatrice in bianco per dare un confine visivo */
+  border-bottom: 4px solid #fff; /* Linea separatrice in bianco per delimitare la sezione */
+}
+
+.blog-social h2 {
+  font-size: 2.5rem;
+  color: #fff; /* Colore del titolo bianco per contrasto sul verde */
+  margin-bottom: 20px;
+}
+
+.blog-social p {
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  line-height: 1.5;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #fff; /* Sfondo bianco per le icone */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombra per dare un effetto di profondità */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1); /* Effetto di zoom */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Ombra più forte durante l'hover */
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2); /* Ingigantisce l'immagine durante l'hover */
+}
+
+/* Focus specifico sull'Instagram */
+.instagram-icon {
+  border: 2px solid #fff; /* Bordo bianco per evidenziare Instagram */
+  padding: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-icon:hover {
+  transform: scale(1.1); /* Effetto di zoom maggiore per Instagram */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Ombra più forte per Instagram */
+}
+
+/* Anteprima Feed Instagram */
+.instagram-preview {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.instagram-preview h3 {
+  font-size: 2rem;
+  color: #2E8B57;
+  margin-bottom: 20px;
+}
+
+.instagram-preview p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.instagram-feed {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.instagram-feed img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.instagram-feed img:hover {
+  transform: scale(1.1); /* Effetto di zoom sulle immagini Instagram */
+}
+
+/* Responsività per dispositivi mobili */
+@media (max-width: 768px) {
+  .blog-social h2 {
+    font-size: 2rem; /* Ridurre la dimensione del titolo su dispositivi più piccoli */
+  }
+
+  .blog-social p {
+    font-size: 1rem; /* Ridurre la dimensione del testo su dispositivi più piccoli */
+  }
+
+  .social-icons {
+    gap: 20px; /* Ridurre lo spazio tra le icone */
+  }
+
+  .social-icons a {
+    width: 40px; /* Icone più piccole sui dispositivi mobili */
+    height: 40px;
+  }
+
+  .instagram-preview h3 {
+    font-size: 1.6rem; /* Ridurre il titolo nell'anteprima Instagram */
+  }
+
+  .instagram-preview p {
+    font-size: 1rem; /* Ridurre la dimensione del testo nella preview */
+  }
+
+  .instagram-feed {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .instagram-feed img {
+    width: 80px; /* Immagini più piccole nei dispositivi mobili */
+    height: 80px;
+  }
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-info {
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-info .footer-logo {
+    max-width: 150px; /* Dimensione massima del logo */
+    height: auto;
+  }
+  
+  /* Responsività - Assicurati che il logo non diventi troppo grande sui dispositivi più piccoli */
+  @media (max-width: 768px) {
+    .footer-info .footer-logo {
+      max-width: 150px; /* Logo più piccolo sui dispositivi mobili */
+    }
+  }
+
+
+.footer-links,
+.footer-contact,
+.footer-social {
+    flex: 1;
+    max-width: 300px;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff6f00;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff6f00;
+}
+
+.footer-contact a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-contact p {
+  color: #fff;
+}
+
+.footer-contact a:hover {
+    color: #ff6f00;
+}
+
+/* Icone social */
+.footer-social .social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Centra le icone */
+}
+
+.footer-social .social-icons a {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.footer-social .social-icons img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.footer-social .social-icons a:hover img {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #ddd;
+}
+
+.footer-bottom p {
+    margin: 10px 0;
+    color: white;
+}
+
+.footer-bottom a {
+    color: #ff6f00;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* Responsività: mobile-first */
+@media (max-width: 768px) {
+    .footer .container {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .footer-info,
+    .footer-links,
+    .footer-contact,
+    .footer-social {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+}
+
+
+******* 
+
+.pagina-storica {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#hero-storico {
+    position: relative;
+    width: 100%;  /* L'immagine si estende su tutta la larghezza della pagina */
+    height: 60vh; /* Altezza responsiva in base alla finestra, puoi regolarla */
+    overflow: hidden; /* Nasconde qualsiasi contenuto che esca dall'area dell'hero */
+}
+
+.hero-image1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image1 img {
+    width: 100%;  /* Immagine che si estende su tutta la larghezza */
+    height: 100%; /* L'immagine riempie tutta l'altezza dell'hero */
+    object-fit: cover; /* Mantiene l'aspetto dell'immagine senza deformazioni */
+}
+
+.hero-content1 {
+    position: absolute;
+    bottom: 30px;  /* Posiziona il testo a 30px dal fondo, puoi regolare questo valore */
+    left: 50%;
+    transform: translateX(-50%);  /* Centra il testo orizzontalmente */
+    text-align: center;
+    color: white;
+    font-size: 3em;  /* Dimensione del testo */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Ombra per migliorare la leggibilità */
+}
+
+#introduzione-storica, .contenitore {
+    margin: 30px auto;
+    text-align: center;
+    max-width: 1200px;
+    background-color: #e65c00;
+}
+
+#introduzione-storica h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.anno-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+
+
+.anno-section .testo-anno {
+    flex: 1;
+    padding: 10px;
+}
+
+.anno-section .testo-anno1 {
+    flex: 1;
+    padding: 10px;
+    background-color: white;
+}
+
+.anno-section .immagine-anno {
+    flex: 1;
+    padding: 10px;
+}
+
+.anno-section img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#sponsor-e-biglietti {
+  background-color: #f9f9f9; /* Colore di sfondo chiaro */
+  padding: 60px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.sponsor-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.sponsor-info,
+.ticket-info {
+  flex: 1;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sponsor-info h2, .ticket-info h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.sponsor-info p, .ticket-info p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.sponsor-logo img {
+  max-width: 250px;
+  height: auto;
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+}
+
+.sponsor-logo img:hover {
+  transform: scale(1.1); /* Effetto di ingrandimento al passaggio del mouse */
+}
+
+.ticket-prices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.ticket-option {
+  flex: 0 0 30%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ticket-option h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ticket-option p {
+  font-size: 1.6rem;
+  color: #2E8B57;
+  font-weight: bold;
+}
+
+.ticket-buttons {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.ticket-buttons .button {
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #2E8B57;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.ticket-buttons .button:hover {
+  background-color: #2E8B57;
+}
+
+.ticket-buttons .button.secondary {
+  background-color: #007bff;
+}
+
+.ticket-buttons .button.secondary:hover {
+  background-color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sponsor-container {
+    flex-direction: column;
+  }
+
+  .sponsor-info,
+  .ticket-info {
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+
+  .ticket-option {
+    flex: 0 0 100%;
+    margin-bottom: 15px;
+  }
+}
+
+
+#museo-introduzione {
+  background-color: #f0f0f0; /* Colore di sfondo chiaro */
+  padding: 60px 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.museo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.museo-buttons {
+  margin-top: 30px;
+}
+
+.museo-buttons .button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.museo-buttons .button:hover {
+  background-color: #0056b3;
+}
+
+.museo-buttons .button.secondary {
+  background-color: #28a745;
+}
+
+.museo-buttons .button.secondary:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .museo-buttons .button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+
+#titolo-colorato {
+  background-color: #f4f4f4; /* Colore di sfondo chiaro */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.titolo-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.titolo-container h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #e65c00; /* Colore arancione, puoi cambiare con il tuo colore preferito */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Testo in maiuscolo */
+  letter-spacing: 2px; /* Spaziatura tra le lettere per un effetto più elegante */
+}
+
+.titolo-container p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem; /* Riduce la dimensione del titolo su schermi più piccoli */
+  }
+
+  p {
+    font-size: 1rem; /* Adatta la dimensione del paragrafo */
+  }
+}
+
+****
+.riserva-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+
+
+/* Sezione Introduzione Riserva */
+.riserva-introduzione {
+  background-color: #eaf9e0; /* Blu scuro */
+  color: #ffffff;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.riserva-introduzione p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333;
+}
+
+.riserva-introduzione h2 {
+ color: #2e8b57;
+}
+
+.riserva-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Sezione Capo San't Andrea */
+.capo-santandrea {
+  background-color: #ffffff; /* Bianco */
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.capo-santandrea p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #555;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Sezione Biodiversità */
+.biodiversita-card {
+  background-color: #0F3956; /* Blu scuro per la sezione */
+  color: #fff; /* Testo bianco */
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.biodiversita-card h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+}
+
+.biodiversita-card p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #c6dae7;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.riserva-divider {
+  border: 0;
+  height: 2px; /* Altezza del divisore */
+  background-color: #0F3956; /* Blu scuro per lo sfondo */
+  margin: 3rem 0; /* Margine per distanziare il divisore dalle sezioni */
+}
+
+.riserva-divider:before {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #fff; /* Colore bianco per il divisore */
+  margin-top: -2px; /* Pusha leggermente il divisore bianco sopra il bordo */
+}
+
+/* Layout delle card */
+.biodiversita-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #ffffff; /* Sfondo chiaro per ogni card */
+  width: 250px;
+  height: 350px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera per dare profondità */
+  transition: transform 0.3s ease-in-out; /* Aggiunge un effetto di zoom al passaggio del mouse */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Solleva la card al passaggio del mouse */
+}
+
+.card-img {
+  width: 100%;
+  height: 60%;
+  object-fit: cover; /* Assicura che l'immagine riempia bene la parte superiore */
+}
+
+.card-content {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #003366; /* Blu scuro per il titolo */
+}
+
+.card-link {
+  display: inline-block;
+  font-size: 1rem;
+  color: #63b1e4;
+  text-decoration: none;
+  border: 2px solid #003366;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.card-link:hover {
+  background-color: #0F3956;
+  color: #fff; /* Testo bianco al passaggio del mouse */
+}
+
+
+****
+.escursioni-isola-bella {
+  background-color: #fff7e6; /* Giallo chiaro come sfondo */
+  padding: 5rem 0; /* Distanza generosa da sopra e sotto */
+  text-align: center; /* Centra il testo */
+  border-bottom: 4px solid #ffcc00; /* Linea di separazione gialla */
+}
+
+.escursioni-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+  margin: 0 auto; /* Centra il contenuto orizzontalmente */
+}
+
+.escursioni-title {
+  font-size: 3rem; /* Aumentato per renderlo più visibile */
+  color: #E8C456; /* Giallo per il titolo */
+  margin-bottom: 1.5rem;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase; /* Aggiunge un tocco elegante */
+  letter-spacing: 2px;
+  text-align: center; /* Centra il titolo */
+}
+
+.escursioni-description {
+  font-size: 1.1rem;
+  color: #333; /* Testo scuro per la leggibilità */
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Georgia', serif;
+}
+
+.escursioni-image-container {
+  display: flex;
+  justify-content: center; /* Centra l'immagine */
+  margin-top: 2rem;
+}
+
+.escursioni-img {
+  width: 100%;
+  max-width: 850px; /* Aumentato per rendere l'immagine più grande */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombra leggera per l'immagine */
+  transition: transform 0.3s ease;
+}
+
+.escursioni-img:hover {
+  transform: scale(1.05); /* Ingrandisce l'immagine al passaggio del mouse */
+}
+
+/* Stili per il divisore tra le sezioni */
+.divider {
+  border: 0;
+  height: 2px; /* Altezza della linea */
+  background-color: #ffcc00; /* Colore della linea (giallo) */
+  margin: 3rem 0; /* Spaziatura sopra e sotto la linea */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera sotto la linea */
+  border-radius: 5px; /* Bordo arrotondato (opzionale) */
+}
+
+/* Puoi anche aggiungere un effetto per i dispositivi mobili */
+@media (max-width: 768px) {
+  .divider {
+    margin: 2rem 0; /* Riduci il margine su schermi più piccoli */
+  }
+}
+
+/* Sezione Percorsi */
+.escursioni-percorsi {
+  background-color: #63b1e4;
+  padding: 3rem 0;
+}
+
+.escursioni-percorsi .escursioni-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.escursioni-percorsi h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.percorsi-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+
+.percorsi-card h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.percorsi-card p {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+/* Stili per la galleria */
+.escursioni-galleria {
+  background-color: #f0f0f0;
+  padding: 3rem 0;
+}
+
+.escursioni-galleria .escursioni-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.escursioni-galleria h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.galleria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.galleria-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.galleria-immagine {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Effetto hover sulle immagini */
+.galleria-immagine:hover {
+  transform: scale(1.05);  /* Ingrandisce l'immagine al passaggio del mouse */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);  /* Ombra più intensa */
+}
+
+/* Stili per la visualizzazione ingrandita */
+.image-viewer {
+  display: none; /* Nascondiamo la sezione finché non viene cliccata un'immagine */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.image-viewer.active {
+  display: flex;  /* Mostra l'immagine quando la classe 'active' è aggiunta */
+}
+
+.image-container {
+  max-width: 90%;
+  max-height: 90%;
+  overflow: hidden;
+}
+
+.view-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Sezione Recensioni */
+.escursioni-recensioni {
+  background-color: #63b1e4;
+  padding: 3rem 0;
+}
+
+.escursioni-recensioni .escursioni-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.escursioni-container h3 {
+color: #E8C456;
+}
+
+.escursioni-recensioni h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.recensione blockquote {
+  font-size: 1.2rem;
+  font-style: italic;
+  border-left: 4px solid #E8C456;
+  margin: 1.5rem 0;
+  padding-left: 20px;
+  color: #f0f0f0;
+}
+
+.recensione blockquote p {
+ color: #f8f9fa;
+}
+
+.recensione footer {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+
+/* Sezione informazioni utili */
+.escursioni-info-utili {
+  background-color: #E8C456;
+  padding: 3rem 0;
+}
+
+.escursioni-info-utili .escursioni-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.escursioni-info-utili h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.escursioni-info-utili ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.escursioni-info-utili li {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+****
+.centrato {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.opzione {
+  text-align: center;  /* Centra il contenuto delle opzioni */
+  margin-bottom: 20px; /* Spazio tra le opzioni */
+}
+
+
+.come-arrivare {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.come-arrivare h2 {
+    font-size: 2.5em;
+    color: #218838;
+    margin-bottom: 30px;
+}
+
+.come-arrivare p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.opzioni-arrivo {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.opzione {
+    background-color: #e8e6e6;
+    padding: 30px;
+    width: 28%;
+    max-width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.opzione:hover {
+    transform: translateY(-10px);
+}
+
+.opzione h3 {
+    font-size: 1.8em;
+    color: #68B1C7;
+    margin-bottom: 15px;
+}
+
+.opzione p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Responsività per dispositivi mobili */
+@media (max-width: 1024px) {
+    .opzione {
+        width: 45%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .opzione {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
+.contatti {
+    padding: 60px 20px;
+    background-color: #e8e6e6;
+    text-align: center;
+}
+
+.contatti h2 {
+    font-size: 2.5em;
+    color: #2e8b57;
+    margin-bottom: 30px;
+}
+
+.contatti p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.contatti-box {
+    background-color: #fffdfd;
+    padding: 30px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.contatti-box h3 {
+    font-size: 1.8em;
+    color: #2e8b57;
+    margin-bottom: 20px;
+}
+
+.contatti-box p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.contatti-box a {
+    color: #2e8b57;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contatti-box a:hover {
+    color: #255d42;
+}
+
+
+
+/* Centrare i titoli e i paragrafi all'interno di ogni sezione */
+.testo-centrato {
+  text-align: center;
+  margin: 20 auto;
+  display: block;
+}
+
+/* Gestione della sezione generale */
+.info-tariffe {
+  padding: 20px;
+}
+
+.contenuto-info {
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+/* Centratura della mappa */
+.mappa-centrata {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Modifica delle dimensioni della mappa */
+.mappa-centrata iframe {
+  width: 80%; /* Aumenta la larghezza al 80% */
+  height: 500px; /* Altezza maggiore */
+  max-width: 900px; /* Limita la larghezza massima per evitare che la mappa diventi troppo larga su schermi molto grandi */
+  border-radius: 8px;
+}
+
+*****
+
+/* Pagine collamenti */
+
+/* Stile generico per la pagina fauna */
+.fauna-pagina {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #218838;
+}
+
+/* Introduzione alla fauna */
+.fauna-introduzione {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.fauna-introduzione h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.fauna-introduzione p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Sezione specie animali */
+.fauna-specie {
+  margin-bottom: 40px;
+}
+
+.fauna-specie h2 {
+  font-size: 2rem;
+  color: #004080;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Centra le card con il giusto spazio */
+.fauna-specie-lista {
+  display: flex;
+  justify-content: center;  /* Centra le card orizzontalmente */
+  gap: 30px;  /* Aggiunge spazio tra le card */
+  flex-wrap: wrap;  /* Consente alle card di andare a capo su schermi piccoli */
+  margin-top: 20px;
+}
+
+.fauna-specie-item {
+  background-color: rgb(138, 199, 190);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 280px;  /* Imposta una larghezza fissa per le card */
+  text-align: center;  /* Allinea il testo al centro */
+}
+
+.fauna-specie-item h3 {
+  font-size: 1.6rem;
+  color:rgb(245, 249, 248) ;
+  margin-bottom: 10px;
+}
+
+.fauna-immagine {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Sezione Conservazione */
+.fauna-conservazione {
+  background-color:rgb(138, 199, 190);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.fauna-conservazione h2 {
+  font-size: 2rem;
+  color: rgb(242, 246, 246);
+  margin-bottom: 15px;
+}
+
+.fauna-conservazione p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+  .fauna-introduzione h1 {
+      font-size: 2rem;
+  }
+
+  .fauna-specie h2 {
+      font-size: 1.8rem;
+  }
+
+  .fauna-specie-lista {
+      justify-content: center;
+      gap: 15px;  /* Riduce lo spazio tra le card su schermi più piccoli */
+  }
+
+  .fauna-specie-item {
+      width: 100%;  /* Le card occupano tutta la larghezza disponibile su schermi piccoli */
+      max-width: 350px;  /* Limita la larghezza massima */
+  }
+
+  .fauna-conservazione p {
+      font-size: 1rem;
+  }
+}
+
+/* Divisore con sfondo turchese e linea bianca */
+.fauna-divisore-turchese {
+  background-color:#0F3956;  /* Colore turchese */
+  padding: 20px 0;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.fauna-linea-bianca {
+  display: inline-block;
+  width: 60%;  /* Puoi variare la larghezza della linea */
+  height: 4px;
+  background-color:white;
+  margin-top: 10px;
+}
+
+/* Divisore con sfondo bianco e linea turchese */
+.fauna-divisore-bianco {
+  background-color: white;  /* Sfondo bianco */
+  padding: 20px 0;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.fauna-linea-turchese {
+  display: inline-block;
+  width: 60%;  /* Puoi variare la larghezza della linea */
+  height: 4px;
+  background-color:rgb(138, 199, 190);  /* Colore turchese */
+  margin-top: 10px;
+}
+
+*****
+
+/* Stile generico per la pagina Flora */
+.flora-pagina {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #218838; /* Colore verde per flora */
+}
+
+/* Introduzione alla flora */
+.flora-introduzione {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.flora-introduzione h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.flora-introduzione p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Sezione piante */
+.flora-piante {
+  margin-bottom: 40px;
+}
+
+.flora-piante h2 {
+  font-size: 2rem;
+  color: #004080;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Centra le card delle piante */
+.flora-piante-lista {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.flora-piante-item {
+  background-color: rgb(138, 199, 190); /* Colore verde chiaro */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  text-align: center;
+}
+
+.flora-piante-item h3 {
+  font-size: 1.6rem;
+  color: rgb(245, 249, 248);
+  margin-bottom: 10px;
+}
+
+.flora-immagine {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Sezione Conservazione Flora */
+.flora-conservazione {
+  background-color: rgb(138, 199, 190);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.flora-conservazione h2 {
+  font-size: 2rem;
+  color: rgb(242, 246, 246);
+  margin-bottom: 15px;
+}
+
+.flora-conservazione p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Responsività Flora */
+@media (max-width: 768px) {
+  .flora-introduzione h1 {
+    font-size: 2rem;
+  }
+
+  .flora-piante h2 {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  .flora-piante-lista {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .flora-piante-item {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .flora-piante-item p{
+    width: 100%;
+    max-width: 350px;
+    color: white;
+  }
+
+  .flora-conservazione p {
+    font-size: 1rem;
+  }
+}
+
+/* Divisore Flora con sfondo turchese e linea bianca */
+.flora-divisore-turchese {
+  background-color: #0F3956;
+  padding: 20px 0;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.flora-linea-bianca {
+  display: inline-block;
+  width: 60%;
+  height: 4px;
+  background-color: white;
+  margin-top: 10px;
+}
+
+/* Divisore Flora con sfondo bianco e linea turchese */
+.flora-divisore-bianco {
+  background-color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.flora-linea-turchese {
+  display: inline-block;
+  width: 60%;
+  height: 4px;
+  background-color: rgb(138, 199, 190);
+  margin-top: 10px;
+}
+
+****
+
+
+/* Container for centering the content */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Section base styles */
+.section {
+  padding: 40px 0;
+  background-color: #fff;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Title styles */
+.title-intro, 
+.subtitle-malattie, 
+.subtitle-vento, 
+.subtitle-siccita, 
+.subtitle-fisico, 
+.subtitle-conclusioni, 
+.subtitle-contatti {
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Main title (Intro) */
+.title-intro {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Subtitle styles for each section */
+.subtitle-malattie, 
+.subtitle-vento, 
+.subtitle-siccita, 
+.subtitle-fisico, 
+.subtitle-conclusioni, 
+.subtitle-contatti {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Text content for all sections */
+.text-intro, 
+.text-malattie, 
+.text-vento, 
+.text-siccita, 
+.text-fisico, 
+.text-conclusioni, 
+.text-contatti {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Lists for each section */
+.list-malattie, 
+.list-vento, 
+.list-siccita, 
+.list-fisico {
+    text-align: left;
+    margin: 20px auto;
+    max-width: 700px;
+    list-style-type: disc;
+}
+
+.list-malattie li,
+.list-vento li,
+.list-siccita li,
+.list-fisico li {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+/* Image styles for all sections */
+.image-malattie,
+.image-vento,
+.image-siccita,
+.image-fisico,
+.image-conclusioni,
+.image-contatti {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+
+/* Section-specific background colors */
+#intro-emergenze-floristiche {
+    background-color: #f9f9f9;
+}
+
+#malattie-parassiti-emergenze {
+    background-color: #e0f7fa;
+}
+
+#vento-danni-emergenze {
+    background-color: #fff3e0;
+}
+
+#siccita-emergenze {
+    background-color: #fce4ec;
+}
+
+#danno-fisico-emergenze {
+    background-color: #e8f5e9;
+}
+
+#conclusioni-emergenze {
+    background-color: #f1f8e9;
+}
+
+#contatti-emergenze-aiuto {
+    background-color: #f9fbe7;
+}
+
+/* Responsive text size for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .title-intro {
+        font-size: 1.5rem;
+    }
+
+    .subtitle-malattie, 
+    .subtitle-vento, 
+    .subtitle-siccita, 
+    .subtitle-fisico, 
+    .subtitle-conclusioni, 
+    .subtitle-contatti {
+        font-size: 1.2rem;
+    }
+
+    .text-intro,
+    .text-malattie, 
+    .text-vento, 
+    .text-siccita, 
+    .text-fisico, 
+    .text-conclusioni, 
+    .text-contatti {
+        font-size: 0.95rem;
+    }
+
+    .image-malattie,
+    .image-vento,
+    .image-siccita,
+    .image-fisico,
+    .image-conclusioni,
+    .image-contatti {
+        max-width: 90%;
+    }
+}
+
+/* Add hover effect on links (optional) */
+a {
+    color: #0288d1;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Optional: style for specific headings (if needed for nested content) */
+h1, h2, h3, h4 {
+    font-weight: bold;
+}
+
+/* Style for contact button (if used) */
+button {
+    background-color: #0288d1;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #0277bd;
+}
+
+.divisore-emergenze {
+  width: 100%;                /* Occupazione dell'intera larghezza */
+  height: 2px;                /* Altezza della linea */
+  background-color: #4caf50;  /* Colore della linea (verde) */
+  margin: 30px 0;             /* Spaziatura sopra e sotto il divisore */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Opzionale: aggiunge una leggera ombra */
+}
+
+
+.section-bottoni {
+  background-color: #f1f1f1; /* Colore di sfondo chiaro per la sezione dei bottoni */
+  padding: 40px 0;
+  text-align: center;
+  margin-top: 50px; /* Distanzia dalla sezione precedente */
+}
+
+.title-bottoni {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.btn-navigazione {
+  background-color: #4caf50; /* Colore verde per i bottoni */
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-navigazione:hover {
+  background-color: #388e3c; /* Colore verde scuro quando si passa sopra con il mouse */
+}
+
+/* Media query per schermi più piccoli */
+@media (max-width: 768px) {
+  .button-container {
+      flex-direction: column; /* I bottoni si allineano verticalmente su schermi piccoli */
+      gap: 20px;
+  }
+
+  .btn-navigazione {
+      width: 100%; /* I bottoni occupano tutta la larghezza disponibile sui dispositivi mobili */
+      padding: 12px 0;
+      font-size: 1rem;
+  }
+}
+
+****
+
+/* Header */
+#header-termini {
+  background-color: #0288d1;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+#header-termini h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Sezione Principale */
+.section-termini {
+  background-color: white;
+  padding: 40px 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.title-introduzione, 
+.title-accettazione, 
+.title-modifiche,
+.title-uso, 
+.title-sicurezza, 
+.title-proprieta, 
+.title-limitazione,
+.title-link, 
+.title-privacy,
+.title-legge,
+.title-contatti {
+  font-size: 1.75rem;
+  color: #0288d1;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #0288d1;
+  padding-bottom: 5px;
+}
+
+.section-termini p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Link */
+a {
+  color: #0288d1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+#footer-termini {
+  background-color: #0288d1;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#footer-termini p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+  .container {
+      width: 90%;
+  }
+
+  #header-termini h1 {
+      font-size: 2rem;
+  }
+
+  .title-introduzione, 
+  .title-accettazione, 
+  .title-modifiche,
+  .title-uso, 
+  .title-sicurezza, 
+  .title-proprieta, 
+  .title-limitazione,
+  .title-link, 
+  .title-privacy,
+  .title-legge,
+  .title-contatti {
+      font-size: 1.5rem;
+  }
+
+  .section-termini p {
+      font-size: 1rem;
+  }
+}
+
+*****
+
+#header-privacy {
+  background-color: #0288d1;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+#header-privacy h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Sezione Principale */
+.section-privacy {
+  background-color: white;
+  padding: 40px 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.title-introduzione-privacy, 
+.title-tipologia-dati, 
+.title-uso-dati,
+.title-condivisione-dati, 
+.title-sicurezza-dati, 
+.title-diritti, 
+.title-conservazione, 
+.title-modifiche-privacy,
+.title-contatti-privacy {
+  font-size: 1.75rem;
+  color: #0288d1;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #0288d1;
+  padding-bottom: 5px;
+}
+
+.section-privacy p, 
+.section-privacy ul {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.section-privacy ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+/* Link */
+a {
+  color: #0288d1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+#footer-privacy {
+  background-color: #0288d1;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#footer-privacy p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+  .container {
+      width: 90%;
+  }
+
+  #header-privacy h1 {
+      font-size: 2rem;
+  }
+
+  .title-introduzione-privacy, 
+  .title-tipologia-dati, 
+  .title-uso-dati,
+  .title-condivisione-dati, 
+  .title-sicurezza-dati, 
+  .title-diritti, 
+  .title-conservazione, 
+  .title-modifiche-privacy,
+  .title-contatti-privacy {
+      font-size: 1.5rem;
+  }
+
+  .section-privacy p, 
+  .section-privacy ul {
+      font-size: 1rem;
+  }
+}
+
